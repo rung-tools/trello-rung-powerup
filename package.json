@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node server.js",
     "production:start": "pm2 start process.yml",
-    "build": "webpack && cp src/index.html public/"
+    "build": "webpack"
   },
   "dependencies": {
     "config": "^1.26.1",
@@ -17,6 +17,7 @@
     "express": "^4.15.3"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^4.0.1",
     "webpack": "^2.6.1"
   }
 }
