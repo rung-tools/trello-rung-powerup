@@ -1,0 +1,22 @@
+{
+  "name": "rung-powerup",
+  "version": "0.0.1",
+  "description": "Get up to date about your Rung alerts inside Trello!",
+  "main": "server.js",
+  "repository": "ssh://tfs.ngi.com.br:22/tfs/NG/rung-saas/_git/rung-powerup",
+  "author": "Paulo Henrique Cuchi <paulo.cuchi@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "production:start": "pm2 start process.yml",
+    "build": "webpack && cp src/index.html public/"
+  },
+  "dependencies": {
+    "config": "^1.26.1",
+    "cors": "^2.8.3",
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "webpack": "^2.6.1"
+  }
+}
