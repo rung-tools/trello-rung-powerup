@@ -1,0 +1,20 @@
+{
+    "name": "Rung",
+    "details": "Get up to date about your Rung alerts inside Trello!",
+    "icon": "./assets/rung.png",
+    "author": "Rung Developers Team",
+    "capabilities": [
+        "card-badges",
+        "show-settings",
+        "authorization-status",
+        "show-authorization"
+    ],
+    "connectors": {
+        "iframe": {
+            "url": "./index.html"
+        }
+    },
+    "recommend": {
+        "urls": []
+    }
+}

@@ -14,4 +14,4 @@ module.exports = {
         { from: './src/*.html', flatten: true },
         { from: './src/*.json', flatten: true }
     ])]
-}
+};
