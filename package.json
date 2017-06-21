@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node server.js",
     "production:start": "pm2 start process.yml",
+    "production:stop": "pm2 stop process.yml",
     "build": "webpack"
   },
   "dependencies": {
