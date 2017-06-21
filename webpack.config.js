@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
     entry: './src/index.js',
     output: {
-        path: path.join(__dirname, 'public'),
+        path: path.join(__dirname, 'public/'),
         filename: 'bundle.js'
     },
     externals: {
@@ -12,6 +12,7 @@ module.exports = {
     },
     plugins: [new CopyWebpackPlugin([
         { from: './src/*.html', flatten: true },
-        { from: './src/*.json', flatten: true }
+        { from: './src/*.json', flatten: true },
+        { from: './src/assets/', to: 'assets' }
     ])]
 };
