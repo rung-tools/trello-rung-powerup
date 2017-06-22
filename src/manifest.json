@@ -1,7 +1,9 @@
 {
     "name": "Rung",
     "details": "Get up to date about your Rung alerts inside Trello!",
-    "icon": "./assets/rung.png",
+    "icon": {
+        "url": "./assets/rung.png"
+    },
     "author": "Rung Developers Team",
     "capabilities": [
         "card-badges",
