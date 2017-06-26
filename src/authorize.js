@@ -1,9 +1,9 @@
 
 /* global TrelloPowerUp, document */
 
-const trello = TrelloTrelloPowerUp.iframe();
+const trello = TrelloPowerUp.iframe();
 
 document.getElementById('authorize').addEventListener('click', () => {
     console.log('Token is set to asd');
-    TrelloPowerUp.set('organization', 'private', 'token', 'asd');
+    trello.set('organization', 'private', 'token', 'asd');
 });
