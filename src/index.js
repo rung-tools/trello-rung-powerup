@@ -18,9 +18,11 @@ TrelloPowerUp.initialize({
 
     'authorization-status': trello =>
         new Promise(resolve => {
-            const token = trello.get('organization', 'private', 'token', '');
-            console.log('Token is: ' + token);
-            resolve({ authorized: Boolean(token) });
+            trello.get('organization', 'private', 'token', '')
+                .then(token => {
+                    console.log('Token is: ' + token);
+                    resolve({ authorized: Boolean(token) });
+                });
         }),
 
     'show-authorization': trello =>
