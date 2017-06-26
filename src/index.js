@@ -1,4 +1,5 @@
-const TrelloPowerUp = require('power-up');
+const { Promise } = TrelloPowerUp = require('power-up');
+const rung = require('./rung');
 
 TrelloPowerUp.initialize({
     'board-buttons': (trello, board) => {
@@ -16,8 +17,10 @@ TrelloPowerUp.initialize({
         }),
 
     'authorization-status': () =>
-        new TrelloPowerUp.Promise(resolve => {
-            resolve({ authorized: false })
+        new Promise(resolve => {
+            const token = trello.get('organization', 'private', 'token', '');
+            console.log('Token is: ' + token);
+            resolve({ authorized: !!token });
         }),
 
     'show-authorization': trello =>
