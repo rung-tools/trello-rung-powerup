@@ -2,10 +2,13 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        bundle: './src/index.js',
+        authorize: './src/authorize.js'
+    },
     output: {
         path: path.join(__dirname, 'public/'),
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
     externals: {
         'power-up': 'TrelloPowerUp'
