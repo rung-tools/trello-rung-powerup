@@ -1,14 +1,14 @@
-const { Promise } = TrelloPowerUp = require('power-up');
+
+/* global TrelloPowerUp */
+
 const rung = require('./rung');
 
 TrelloPowerUp.initialize({
-    'board-buttons': (trello, board) => {
-        return [{
-            icon: './assets/rung.png',
-            text: 'Rung',
-            url: 'https://app.rung.com.br/'
-        }]
-    },
+    'board-buttons': (trello, board) => [{
+        icon: './assets/rung.png',
+        text: 'Rung',
+        url: 'https://app.rung.com.br/'
+    }],
 
     'show-settings': trello =>
         trello.popup({
@@ -16,11 +16,11 @@ TrelloPowerUp.initialize({
             url: 'settings.html'
         }),
 
-    'authorization-status': () =>
+    'authorization-status': trello =>
         new Promise(resolve => {
             const token = trello.get('organization', 'private', 'token', '');
             console.log('Token is: ' + token);
-            resolve({ authorized: !!token });
+            resolve({ authorized: Boolean(token) });
         }),
 
     'show-authorization': trello =>

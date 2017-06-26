@@ -10,7 +10,8 @@
     "start": "node server.js",
     "production:start": "pm2 start process.yml",
     "production:stop": "pm2 stop process.yml",
-    "build": "webpack"
+    "build": "webpack",
+    "lint": "xo"
   },
   "dependencies": {
     "config": "^1.26.1",
@@ -20,6 +21,36 @@
   },
   "devDependencies": {
     "copy-webpack-plugin": "^4.0.1",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "xo": "^0.18.2"
+  },
+  "xo": {
+    "esnext": true,
+    "space": 4,
+    "rules": {
+      "capitalized-comments": [
+        "off"
+      ],
+      "xo/catch-error-name": [
+        "off"
+      ],
+      "operator-linebreak": [
+        "error",
+        "before"
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "import/prefer-default-export": [
+        "off"
+      ],
+      "import/no-dynamic-require": [
+        "off"
+      ],
+      "no-useless-escape": [
+        "off"
+      ]
+    }
   }
 }

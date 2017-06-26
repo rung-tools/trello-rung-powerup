@@ -10,9 +10,6 @@ module.exports = {
         path: path.join(__dirname, 'public/'),
         filename: '[name].js'
     },
-    externals: {
-        'power-up': 'TrelloPowerUp'
-    },
     plugins: [new CopyWebpackPlugin([
         { from: './src/*.html', flatten: true },
         { from: './src/*.json', flatten: true },
