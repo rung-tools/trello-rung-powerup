@@ -4,6 +4,12 @@
 const trello = TrelloPowerUp.iframe();
 
 document.getElementById('authorize').addEventListener('click', () => {
-    console.log('Token is set to asd');
-    trello.set('organization', 'private', 'token', 'asd');
+    // TODO: get token from our endpoint
+    const token = document.getElementById('email').value;
+
+    trello.set('organization', 'private', 'token', token)
+        .then(() => {
+            console.log('Token is set to ' + token);
+            trello.closePopup();
+        });
 });

@@ -7,6 +7,7 @@
     "author": "Rung Developers Team",
     "capabilities": [
         "card-badges",
+        "board-buttons",
         "show-settings",
         "authorization-status",
         "show-authorization"
