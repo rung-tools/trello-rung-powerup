@@ -29,6 +29,6 @@ TrelloPowerUp.initialize({
         trello.popup({
             title: 'Connect with Rung!',
             url: 'authorize.html',
-            height: 450
+            height: 200
         })
 });
