@@ -14,15 +14,15 @@ function login(email, password) {
 }
 
 function whoami() {
-    return agent.get(route('/whoami')).withCredentials();
+    return agent.get(route('/whoami')).withCredentials().end();
 }
 
 function getSettings() {
-    return agent.get(route('/trello/settings')).withCredentials();
+    return agent.get(route('/trello/settings')).withCredentials().end();
 }
 
 function getNotifications() {
-    return agent.get(route('/notifications')).withCredentials();
+    return agent.get(route('/notifications')).withCredentials().end();
 }
 
 module.exports = { login, whoami, getSettings, getNotifications };
