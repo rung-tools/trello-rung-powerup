@@ -14,10 +14,12 @@
     "lint": "xo"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
     "config": "^1.26.1",
     "cors": "^2.8.3",
     "express": "^4.15.3",
-    "superagent": "^3.5.2"
+    "superagent": "^3.5.2",
+    "superagent-promise": "^1.1.0"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^4.0.1",

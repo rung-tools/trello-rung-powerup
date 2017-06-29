@@ -1,15 +1,14 @@
 
 /* global TrelloPowerUp, document */
 
+const { login } = require('./rung');
+
 const trello = TrelloPowerUp.iframe();
 
 document.getElementById('authorize').addEventListener('click', () => {
-    // TODO: get token from our endpoint
-    const token = document.getElementById('email').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-    trello.set('organization', 'private', 'token', token)
-        .then(() => {
-            console.log('Token is set to ' + token);
-            trello.closePopup();
-        });
+    login(email, password).then(() => trello.closePopup());
+    // TODO: show an authentication error
 });

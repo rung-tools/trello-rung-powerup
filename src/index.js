@@ -1,10 +1,10 @@
 
 /* global TrelloPowerUp */
 
-const rung = require('./rung');
+const { whoami } = require('./rung');
 
 TrelloPowerUp.initialize({
-    'board-buttons': (trello, board) => [{
+    'board-buttons': () => [{
         icon: './assets/rung-white.png',
         text: 'Rung',
         url: 'https://app.rung.com.br/'
@@ -17,13 +17,9 @@ TrelloPowerUp.initialize({
         }),
 
     'authorization-status': trello =>
-        new Promise(resolve => {
-            trello.get('organization', 'private', 'token', '')
-                .then(token => {
-                    console.log('Token is: ' + token);
-                    resolve({ authorized: Boolean(token) });
-                });
-        }),
+        whoami()
+            .thenReturn({ authorized: true })
+            .catchReturn({ authorized: false }),
 
     'show-authorization': trello =>
         trello.popup({
