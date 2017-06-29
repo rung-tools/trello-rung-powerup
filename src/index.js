@@ -16,7 +16,7 @@ TrelloPowerUp.initialize({
             url: 'settings.html'
         }),
 
-    'authorization-status': trello =>
+    'authorization-status': () =>
         whoami()
             .thenReturn({ authorized: true })
             .catchReturn({ authorized: false }),

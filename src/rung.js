@@ -25,4 +25,4 @@ function getNotifications() {
     return agent.get(route('/notifications')).withCredentials();
 }
 
-module.exports = { login, whoami, getSettings };
+module.exports = { login, whoami, getSettings, getNotifications };
