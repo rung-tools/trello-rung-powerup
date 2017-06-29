@@ -4,7 +4,7 @@ const promisify = require('superagent-promise');
 
 const agent = promisify(superagent, Promise);
 
-const rungApi = 'https://app.rung.com/api';
+const rungApi = 'https://app.rung.com.br/api';
 const route = path => `${rungApi}${path}`;
 
 function login(email, password) {
