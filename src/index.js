@@ -1,7 +1,17 @@
 
 /* global TrelloPowerUp */
 
-const { whoami } = require('./rung');
+const { all, reject } = require('bluebird');
+const { isNil, when } = require('ramda');
+const { whoami, restoreSession } = require('./rung');
+
+const getSessionCredentials = trello => all([
+    trello.get('organization', 'private', 'userId', ''),
+    trello.get('organization', 'private', 'token', '')]);
+
+const ensureCredentials = trello =>
+    trello.get('organization', 'private', 'userId', '')
+        .then(when(isNil, reject));
 
 TrelloPowerUp.initialize({
     'board-buttons': () => [{
@@ -16,8 +26,10 @@ TrelloPowerUp.initialize({
             url: 'settings.html'
         }),
 
-    'authorization-status': () =>
-        whoami()
+    'authorization-status': trello =>
+        ensureCredentials(trello)
+            .then(() => whoami().catch(() =>
+                getSessionCredentials(trello).spread(restoreSession)))
             .thenReturn({ authorized: true })
             .catchReturn({ authorized: false }),
 
