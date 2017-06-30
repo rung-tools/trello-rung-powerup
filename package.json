@@ -14,7 +14,10 @@
   "dependencies": {
     "config": "^1.26.1",
     "cors": "^2.8.3",
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "ramda": "^0.24.1",
+    "superagent": "^3.5.2",
+    "superagent-promise": "^1.1.0"
   },
   "devDependencies": {
     "webpack": "^2.6.1"
