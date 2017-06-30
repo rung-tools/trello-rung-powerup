@@ -1,5 +1,6 @@
 apps:
   - script: server.js
+    cwd: /home/rung/rung-powerup
     name: rung-powerup
     log_date_format: "YYYY-MM-DD HH:mm"
     kill_timeout: 5000

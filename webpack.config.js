@@ -1,13 +1,18 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
-    output: {
-        path: path.join(__dirname, 'public'),
-        filename: 'bundle.js'
+    entry: {
+        bundle: './src/index.js',
+        authorize: './src/authorize.js'
     },
-    externals: {
-        'power-up': 'TrelloPowerUp'
-    }
-}
+    output: {
+        path: path.join(__dirname, 'public/'),
+        filename: '[name].js'
+    },
+    plugins: [new CopyWebpackPlugin([
+        { from: './src/*.html', flatten: true },
+        { from: './src/*.json', flatten: true },
+        { from: './src/assets/', to: 'assets' }
+    ])]
+};
