@@ -1,4 +1,3 @@
-const TrelloPowerUp = require('power-up');
 
 /* global TrelloPowerUp */
 
