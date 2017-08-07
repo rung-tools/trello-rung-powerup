@@ -31,27 +31,15 @@
     "esnext": true,
     "space": 4,
     "rules": {
-      "capitalized-comments": [
-        "off"
-      ],
-      "xo/catch-error-name": [
-        "off"
+      "babel/object-curly-spacing": [
+        "error",
+        "always"
       ],
       "operator-linebreak": [
         "error",
         "before"
       ],
-      "object-curly-spacing": [
-        "error",
-        "always"
-      ],
       "import/prefer-default-export": [
-        "off"
-      ],
-      "import/no-dynamic-require": [
-        "off"
-      ],
-      "no-useless-escape": [
         "off"
       ]
     }
