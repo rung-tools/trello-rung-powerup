@@ -1,4 +1,5 @@
 import { h, render, Component } from 'preact';
+import { login } from './lib/rung';
 
 export default class LoginForm extends Component {
     constructor(props) {
@@ -18,7 +19,12 @@ export default class LoginForm extends Component {
     }
 
     handleSubmit() {
-        console.log(this.state);
+        const { email, password } = this.state;
+        this.setState({ loading: true });
+        login(email, password)
+            .finally(() => {
+                this.setState({ loading: false })
+            });
     }
 
     render() {
@@ -35,8 +41,11 @@ export default class LoginForm extends Component {
                     placeholder="Rung password"
                     onChange={ ({ target }) => this.handleChangePassword(target.value) }
                 />
-                <button className="mod-primary mod-bottom" onClick={ this.handleSubmit.bind(this) }>
-                    Link your Rung account
+                <button
+                    disabled={ this.state.loading }
+                    className="mod-primary mod-bottom"
+                    onClick={ this.handleSubmit.bind(this) }>
+                    { this.state.loading ? 'Loading...' : 'Link your Rung account' }
                 </button>
             </div>
         );
