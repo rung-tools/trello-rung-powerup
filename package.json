@@ -8,11 +8,10 @@
   "license": "MIT",
   "scripts": {
     "start": "node server.js",
-    "production:start": "pm2 start process.yml",
-    "production:stop": "pm2 stop process.yml",
     "build": "webpack",
     "build:production": "webpack -p",
-    "lint": "xo"
+    "lint": "xo",
+    "dev": "yarn build && yarn start"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
@@ -56,6 +55,9 @@
         "VariableDeclaration[kind='var']",
         "VariableDeclaration[kind='let']",
         "TryStatement"
+      ],
+      "no-unused-vars": [
+        "off"
       ]
     },
     "overrides": [

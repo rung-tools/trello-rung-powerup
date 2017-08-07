@@ -13,7 +13,8 @@ const killPlugin = function () {
 };
 
 const staticAssetsPlugin = new CopyWebpackPlugin([
-    { from: path.join(__dirname, 'assets/html/index.html'), to: publicPath }
+    { from: path.join(__dirname, 'assets/html/index.html'), to: publicPath },
+    { from: path.join(__dirname, 'manifest.json'), to: publicPath }
 ]);
 
 module.exports = {
