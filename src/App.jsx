@@ -1,5 +1,6 @@
 import { h, render } from 'preact';
+import LoginForm from './LoginForm';
 
 render((
-    <div>Hello from Preact!</div>
+    <LoginForm />
 ), document.body);
