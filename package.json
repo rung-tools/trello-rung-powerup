@@ -58,11 +58,14 @@
       ],
       "no-unused-vars": [
         "off"
+      ],
+      "import/no-unresolved": [
+        "off"
       ]
     },
     "overrides": [
       {
-        "files": "src/App.jsx",
+        "files": "src/*.jsx",
         "globals": [
           "document"
         ],

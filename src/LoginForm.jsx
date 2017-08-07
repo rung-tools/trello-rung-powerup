@@ -7,7 +7,7 @@ export default class LoginForm extends Component {
         this.state = {
             email: '',
             password: ''
-        }
+        };
     }
 
     handleChangeEmail(email) {
@@ -23,7 +23,7 @@ export default class LoginForm extends Component {
         this.setState({ loading: true });
         login(email, password)
             .finally(() => {
-                this.setState({ loading: false })
+                this.setState({ loading: false });
             });
     }
 

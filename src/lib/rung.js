@@ -1,4 +1,4 @@
-import Promise from 'bluebird'
+import Promise from 'bluebird';
 import superagent from 'superagent';
 import promisifyAgent from 'superagent-promise';
 
