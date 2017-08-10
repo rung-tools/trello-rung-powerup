@@ -15,7 +15,7 @@ const ensureCredentials = trello =>
 
 TrelloPowerUp.initialize({
     'board-buttons': () => [{
-        icon: './assets/rung-white.png',
+        icon: './assets/images/rung-white.png',
         text: 'Rung',
         url: 'https://app.rung.com.br/'
     }],

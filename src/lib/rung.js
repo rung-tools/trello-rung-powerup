@@ -17,3 +17,18 @@ export function login(email, password) {
         .withCredentials()
         .end();
 }
+
+export const trello = {
+    getSessionToken: () => agent.get(rung.route('/trello/session'))
+        .withCredentials()
+        .then(prop('body')),
+
+    restoreSession: (userId, token) => agent.post(rung.route('/trello/session'))
+        .send({ id: userId, token })
+        .withCredentials()
+        .end(),
+
+    deleteSession: () => agent.del(route('/trello/session'))
+        .withCredentials()
+        .end()
+};
