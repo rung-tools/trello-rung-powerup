@@ -14,7 +14,8 @@ const styles = {
     },
     button: {
         width: '100%',
-        maxWidth: '500px'
+        maxWidth: '500px',
+        overflow: 'hidden'
     },
     logo: {
         width: '100%',
@@ -64,8 +65,7 @@ export default class LoginForm extends Component {
         this.setState({ loading: true });
         login(email, password)
             .catch(err => {
-                console.log(err);
-                this.setState({ error: true });
+                this.setState({ error: err.status === 401 ? 'Authentication error' : 'Network error' });
                 setTimeout(() => {
                     this.setState({ error: false });
                 }, 500);
@@ -78,9 +78,7 @@ export default class LoginForm extends Component {
     getMessage() {
         return this.state.loading
             ? 'Making the magic happen...'
-            : this.state.error
-                ? 'Authentication error'
-                : 'Link my Rung account';
+            : this.state.error || 'Link my Rung account';
     }
 
     render() {
