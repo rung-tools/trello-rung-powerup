@@ -65,7 +65,7 @@ export default class LoginForm extends Component {
         this.setState({ loading: true });
         login(email, password)
             .catch(err => {
-                this.setState({ error: err.status > 400 ? 'Authentication error' : 'Network error' });
+                this.setState({ error: err.status >= 400 ? 'Authentication error' : 'Network error' });
                 setTimeout(() => {
                     this.setState({ error: false });
                 }, 500);
