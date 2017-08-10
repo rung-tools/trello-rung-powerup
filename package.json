@@ -67,6 +67,7 @@
       {
         "files": "src/*.jsx",
         "globals": [
+          "window",
           "document"
         ],
         "rules": {

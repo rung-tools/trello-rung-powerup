@@ -1,4 +1,5 @@
 import { h, render, Component } from 'preact';
+import rung from '../assets/images/rung-full-white.png';
 import { login } from './lib/rung';
 
 const styles = {
@@ -12,6 +13,10 @@ const styles = {
     },
     button: {
         width: '100%'
+    },
+    logo: {
+        width: '100%',
+        filter: 'invert(80%)'
     }
 };
 
@@ -44,7 +49,7 @@ export default class LoginForm extends Component {
     render() {
         return (
             <div style={ Object.assign({}, styles.container, { maxWidth: `${window.innerWidth - 20}px` }) }>
-                <p>At first, you need to link your Rung account to Trello</p>
+                <img src={ rung } style={ styles.logo } draggable={ false } />
                 <input
                     type="text"
                     style={ styles.input }
