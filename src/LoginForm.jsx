@@ -12,10 +12,12 @@ const styles = {
         width: '100%'
     },
     button: {
-        width: '100%'
+        width: '100%',
+        maxWidth: '500px'
     },
     logo: {
-        width: '100%'
+        width: '100%',
+        maxWidth: '500px'
     }
 };
 
@@ -36,12 +38,26 @@ export default class LoginForm extends Component {
         this.setState({ password });
     }
 
+    handleEnterEmail(event) {
+        const key = event.keyCode || event.which;
+        if (key === 13 && this.state.email.trim() !== '' && this._password) {
+            this._password.focus();
+        }
+    }
+
+    handleEnterPassword(event) {
+        const key = event.keyCode || event.which;
+        if (key === 13 && this.state.email.trim() !== '' && this.state.password.trim() !== '') {
+            this.handleSubmit();
+        }
+    }
+
     handleSubmit() {
         const { email, password } = this.state;
         this.setState({ loading: true });
         login(email, password)
             .finally(() => {
-                this.setState({ loading: false });
+                this.setState({ loading: false, password: '' });
             });
     }
 
@@ -53,13 +69,20 @@ export default class LoginForm extends Component {
                     type="text"
                     style={ styles.input }
                     placeholder="Rung email"
+                    value={ this.state.email }
                     onChange={ ({ target }) => this.handleChangeEmail(target.value) }
+                    onKeyUp={ this.handleEnterEmail.bind(this) }
                 />
                 <input
                     type="password"
                     style={ styles.input }
                     placeholder="Rung password"
+                    value={ this.state.password }
+                    ref={ password => {
+                        this._password = password;
+                    } }
                     onChange={ ({ target }) => this.handleChangePassword(target.value) }
+                    onKeyUp={ this.handleEnterPassword.bind(this) }
                 />
                 <button
                     style={ styles.button }
