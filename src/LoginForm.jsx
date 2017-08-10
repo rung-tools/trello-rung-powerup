@@ -15,8 +15,7 @@ const styles = {
         width: '100%'
     },
     logo: {
-        width: '100%',
-        filter: 'invert(80%)'
+        width: '100%'
     }
 };
 
