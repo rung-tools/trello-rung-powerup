@@ -31,6 +31,12 @@ export default class LoginForm extends Component {
         };
     }
 
+    componentWillMount() {
+        const updateWidth = () => this.setState({ maxWidth: `${window.innerWidth - 20}px` });
+        updateWidth();
+        window.addEventListener('resize', updateWidth.bind(this));
+    }
+
     handleChangeEmail(email) {
         this.setState({ email });
     }
@@ -58,6 +64,7 @@ export default class LoginForm extends Component {
         this.setState({ loading: true });
         login(email, password)
             .catch(err => {
+                console.log(err);
                 this.setState({ error: true });
                 setTimeout(() => {
                     this.setState({ error: false });
@@ -78,7 +85,7 @@ export default class LoginForm extends Component {
 
     render() {
         return (
-            <div style={ Object.assign({}, styles.container, { maxWidth: `${window.innerWidth - 20}px` }) }>
+            <div style={ Object.assign({}, styles.container, { maxWidth: this.state.maxWidth }) }>
                 <img src={ rung } style={ styles.logo } draggable={ false } />
                 <input
                     type="text"
