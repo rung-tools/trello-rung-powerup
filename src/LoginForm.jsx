@@ -1,4 +1,5 @@
 import { h, render, Component } from 'preact';
+import { resolve } from 'bluebird';
 import rung from '../assets/images/rung-full-white.png';
 import { login } from './lib/rung';
 
@@ -56,9 +57,23 @@ export default class LoginForm extends Component {
         const { email, password } = this.state;
         this.setState({ loading: true });
         login(email, password)
+            .catch(err => {
+                this.setState({ error: true });
+                setTimeout(() => {
+                    this.setState({ error: false });
+                }, 500);
+            })
             .finally(() => {
                 this.setState({ loading: false, password: '' });
             });
+    }
+
+    getMessage() {
+        return this.state.loading
+            ? 'Making the magic happen...'
+            : this.state.error
+                ? 'Authentication error'
+                : 'Link my Rung account';
     }
 
     render() {
@@ -87,9 +102,9 @@ export default class LoginForm extends Component {
                 <button
                     style={ styles.button }
                     disabled={ this.state.loading }
-                    className="mod-primary mod-bottom"
+                    className={ (this.state.error ? 'mod-danger' : 'mod-primary') + ' mod-bottom' }
                     onClick={ this.handleSubmit.bind(this) }>
-                    { this.state.loading ? 'Loading...' : 'Link your Rung account' }
+                    { this.getMessage() }
                 </button>
             </div>
         );
