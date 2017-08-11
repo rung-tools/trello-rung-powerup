@@ -1,7 +1,7 @@
 import { h, render, Component } from 'preact';
 import { resolve } from 'bluebird';
 import rung from '../assets/images/rung-full-white.png';
-import { login } from './lib/rung';
+import { login, oauth } from './lib/rung';
 
 const styles = {
     container: {
@@ -60,19 +60,36 @@ export default class LoginForm extends Component {
         }
     }
 
+    handleError(err) {
+
+        console.log(err);
+        this.setState({
+            error: err.status >= 400 ? 'Authentication error' : 'Network error',
+            loading: false,
+            password: ''
+        });
+
+        setTimeout(() => {
+            this.setState({ error: false });
+        }, 500);
+    }
+
+    handleSuccess({ oauth: alreadyAuthorized, token }) {
+        this.setState({ loading: false, error: false, loading: false, password: '' });
+        if (!alreadyAuthorized) {
+            return oauth(token)
+                .then(x => { console.log(x) });
+        }
+    }
+
     handleSubmit() {
+        var audio = new Audio('http://prtnsrc.com/2545.mp3');
+        audio.play();
         const { email, password } = this.state;
         this.setState({ loading: true });
         login(email, password)
-            .catch(err => {
-                this.setState({ error: err.status >= 400 ? 'Authentication error' : 'Network error' });
-                setTimeout(() => {
-                    this.setState({ error: false });
-                }, 500);
-            })
-            .finally(() => {
-                this.setState({ loading: false, password: '' });
-            });
+            .then(this.handleSuccess.bind(this))
+            .catch(this.handleError.bind(this));
     }
 
     getMessage() {
@@ -86,6 +103,7 @@ export default class LoginForm extends Component {
             <div style={ Object.assign({}, styles.container, { maxWidth: this.state.maxWidth }) }>
                 <img src={ rung } style={ styles.logo } draggable={ false } />
                 <input
+                    autofocus={ true }
                     type="text"
                     style={ styles.input }
                     placeholder="Rung email"
