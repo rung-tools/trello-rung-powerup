@@ -78,13 +78,14 @@ export default class LoginForm extends Component {
         this.setState({ loading: false, error: false, loading: false, password: '' });
         if (!alreadyAuthorized) {
             return oauth(token)
-                .then(x => { console.log(x) });
+                .then(url => {
+                    // TODO: Abrir popup, fechar tela atual
+                    TrelloPowerUp.closePopup();
+                });
         }
     }
 
     handleSubmit() {
-        var audio = new Audio('http://prtnsrc.com/2545.mp3');
-        audio.play();
         const { email, password } = this.state;
         this.setState({ loading: true });
         login(email, password)
