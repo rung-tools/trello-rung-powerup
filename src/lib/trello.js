@@ -1,3 +1,4 @@
+/* global TrelloPowerUp */
 TrelloPowerUp.initialize({
     'board-buttons': () => [{
         icon: './assets/images/rung-white.png',
