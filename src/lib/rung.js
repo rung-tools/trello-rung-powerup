@@ -15,7 +15,7 @@ export function login(email, password) {
     return agent.post(rung.route('/login'))
         .send({ email, password })
         .withCredentials()
-        .then(res => res.body)
+        .then(res => res.body);
 }
 
 export function oauth(token) {

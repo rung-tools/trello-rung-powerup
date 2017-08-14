@@ -23,6 +23,7 @@ const styles = {
     }
 };
 
+/* global TrelloPowerUp */
 export default class LoginForm extends Component {
     constructor(props) {
         super(props);
@@ -61,8 +62,6 @@ export default class LoginForm extends Component {
     }
 
     handleError(err) {
-
-        console.log(err);
         this.setState({
             error: err.status >= 400 ? 'Authentication error' : 'Network error',
             loading: false,
@@ -75,7 +74,7 @@ export default class LoginForm extends Component {
     }
 
     handleSuccess({ oauth: alreadyAuthorized, token }) {
-        this.setState({ loading: false, error: false, loading: false, password: '' });
+        this.setState({ loading: false, error: false, password: '' });
         if (!alreadyAuthorized) {
             return oauth(token)
                 .then(url => {
