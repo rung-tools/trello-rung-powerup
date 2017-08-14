@@ -1,6 +1,6 @@
 import { h, render, Component } from 'preact';
 import { resolve } from 'bluebird';
-import rung from '../assets/images/rung-full-white.png';
+import rung from '../assets/images/rung-full.png';
 import { login, oauth } from './lib/rung';
 
 const styles = {
@@ -19,6 +19,7 @@ const styles = {
     },
     logo: {
         width: '100%',
+        margin: '30px 0',
         maxWidth: '500px'
     }
 };
