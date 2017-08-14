@@ -79,7 +79,7 @@ export default class LoginForm extends Component {
             return oauth(token)
                 .then(url => {
                     // TODO: Abrir popup, fechar tela atual
-                    TrelloPowerUp.closePopup();
+                    TrelloPowerUp.iframe().closePopup();
                 });
         }
     }
