@@ -7,7 +7,7 @@ const styles = {
     container: {
         padding: '10px',
         overflow: 'hidden',
-        width: '100%'
+        width: '100%',
     },
     input: {
         width: '100%'
@@ -18,9 +18,16 @@ const styles = {
         overflow: 'hidden'
     },
     logo: {
-        width: '100%',
+        width: 'calc(100% - 40px)',
         margin: '30px 0',
-        maxWidth: '500px'
+        maxWidth: '460px',
+        margin: '30px 20px'
+    },
+    copyright: {
+        width: '100%',
+        textAlign: 'center',
+        maxWidth: '500px',
+        padding: '10px 0'
     }
 };
 
@@ -130,6 +137,7 @@ export default class LoginForm extends Component {
                     onClick={ this.handleSubmit.bind(this) }>
                     { this.getMessage() }
                 </button>
+                <div style={ styles.copyright }>Rung &copy; ─ All rights reserved</div>
             </div>
         );
     }
