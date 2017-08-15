@@ -7,7 +7,7 @@ const styles = {
     container: {
         padding: '10px',
         overflow: 'hidden',
-        width: '100%',
+        width: '100%'
     },
     input: {
         width: '100%'
@@ -19,15 +19,25 @@ const styles = {
     },
     logo: {
         width: 'calc(100% - 40px)',
-        margin: '30px 0',
-        maxWidth: '460px',
-        margin: '30px 20px'
+        margin: '30px 20px',
+        maxWidth: '460px'
     },
     copyright: {
         width: '100%',
         textAlign: 'center',
         maxWidth: '500px',
-        padding: '10px 0'
+        paddingTop: '10px'
+    },
+    bottom: {
+        position: 'absolute',
+        bottom: 0,
+        backgroundColor: '#F5F5F5',
+        left: 0,
+        width: '100%',
+        textAlign: 'center',
+        padding: '0 10px',
+        maxWidth: '500px',
+        overflow: 'hidden'
     }
 };
 
@@ -130,14 +140,16 @@ export default class LoginForm extends Component {
                     onChange={ ({ target }) => this.handleChangePassword(target.value) }
                     onKeyUp={ this.handleEnterPassword.bind(this) }
                 />
-                <button
-                    style={ styles.button }
-                    disabled={ this.state.loading }
-                    className={ (this.state.error ? 'mod-danger' : 'mod-primary') + ' mod-bottom' }
-                    onClick={ this.handleSubmit.bind(this) }>
-                    { this.getMessage() }
-                </button>
-                <div style={ styles.copyright }>Rung &copy; ─ All rights reserved</div>
+                <div style={ styles.bottom }>
+                    <button
+                        style={ styles.button }
+                        disabled={ this.state.loading }
+                        className={ (this.state.error ? 'mod-danger' : 'mod-primary') + ' mod-bottom' }
+                        onClick={ this.handleSubmit.bind(this) }>
+                        { this.getMessage() }
+                    </button>
+                    <div style={ styles.copyright }>Rung &copy; ─ All rights reserved</div>
+                </div>
             </div>
         );
     }
