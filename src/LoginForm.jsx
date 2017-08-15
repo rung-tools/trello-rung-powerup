@@ -6,6 +6,7 @@ import { login, oauth } from './lib/rung';
 const styles = {
     container: {
         padding: '10px',
+        paddingBottom: '0',
         overflow: 'hidden',
         width: '100%'
     },
@@ -25,18 +26,18 @@ const styles = {
     copyright: {
         width: '100%',
         textAlign: 'center',
-        maxWidth: '500px',
         paddingTop: '10px'
     },
     bottom: {
-        position: 'absolute',
+        position: 'fixed',
         bottom: 0,
         backgroundColor: '#F5F5F5',
         left: 0,
-        width: '100%',
+        maxWidth: '500px',
+        width: 'calc(100% - 20px)',
         textAlign: 'center',
         padding: '0 10px',
-        maxWidth: '500px',
+        paddingBottom: '10px',
         overflow: 'hidden'
     }
 };
