@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "webpack && npm run build:index",
-    "build:production": "webpack -p",
+    "build:production": "webpack -p && npm run build:index",
     "lint": "xo",
     "dev": "yarn build && yarn start",
     "build:index": "babel src/lib/trello.js --out-file public/trello.min.js"
