@@ -93,7 +93,11 @@ export default class LoginForm extends Component {
     }
 
     handleSuccess({ authorized, sessionToken }) {
+        const trello = TrelloPowerUp.iframe();
+
         this.setState({ loading: false, error: false, password: '' });
+        trello.set('board', 'private', { sessionToken });
+        console.log('definidinho bb')
         if (!authorized) {
             return oauth(sessionToken)
                 .then(url => {
