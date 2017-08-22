@@ -5,7 +5,6 @@ TrelloPowerUp.initialize({
         text: 'Rung',
         url: 'https://app.rung.com.br/'
     }],
-
     'show-settings': trello =>
         trello.popup({
             title: 'Rung settings',
@@ -17,5 +16,10 @@ TrelloPowerUp.initialize({
             title: 'Connect with Rung!',
             url: 'authorize.html',
             height: 250
-        })
+        }),
+    'card-buttons': () => [{
+        icon: './assets/images/rung-white.png',
+        text: 'Rung',
+        callback: () => {}
+    }]
 });
