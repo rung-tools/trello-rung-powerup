@@ -14,7 +14,7 @@ TrelloPowerUp.initialize({
     'show-authorization': trello =>
         trello.popup({
             title: 'Connect with Rung!',
-            url: 'authorize.html',
+            url: 'auth.html',
             height: 250
         }),
     'card-buttons': () => [{
