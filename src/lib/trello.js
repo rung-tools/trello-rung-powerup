@@ -1,7 +1,7 @@
 /* global TrelloPowerUp */
 TrelloPowerUp.initialize({
     'board-buttons': () => [{
-        icon: './resouces/rung-white.png',
+        icon: './resources/rung-white.png',
         text: 'Rung',
         url: 'https://app.rung.com.br/'
     }],
@@ -18,7 +18,7 @@ TrelloPowerUp.initialize({
             height: 250
         }),
     'card-buttons': () => [{
-        icon: './resouces/rung-white.png',
+        icon: './resources/rung-white.png',
         text: 'Rung',
         callback: () => {}
     }]

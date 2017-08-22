@@ -2,7 +2,7 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const publicPath = path.join(__dirname, 'public');
-const resourcesPath = path.join(publicPath, 'resources')
+const resourcesPath = path.join(publicPath, 'resources');
 
 const killPlugin = function () {
     this.plugin('done', stats => {
