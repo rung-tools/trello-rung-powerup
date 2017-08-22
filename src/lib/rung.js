@@ -20,5 +20,5 @@ export function login(email, password) {
 export function oauth(sessionToken) {
     return agent.put(rung.route('/oauth'))
         .send({ sessionToken })
-        .then(res => res.url);
+        .then(res => res.body.url);
 }

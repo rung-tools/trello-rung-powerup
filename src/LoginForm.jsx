@@ -95,7 +95,6 @@ export default class LoginForm extends Component {
     handleSuccess({ oauth: alreadyAuthorized, sessionToken }) {
         this.setState({ loading: false, error: false, password: '' });
         if (!alreadyAuthorized) {
-            console.log('chamando oauth com token', sessionToken);
             return oauth(sessionToken)
                 .then(url => {
                     console.log(url);
