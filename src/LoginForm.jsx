@@ -92,13 +92,14 @@ export default class LoginForm extends Component {
         }, 500);
     }
 
-    handleSuccess({ oauth: alreadyAuthorized, token }) {
+    handleSuccess({ oauth: alreadyAuthorized, sessionToken }) {
         this.setState({ loading: false, error: false, password: '' });
         if (!alreadyAuthorized) {
-            return oauth(token)
+            return oauth(sessionToken)
                 .then(url => {
+                    console.log(url);
                     // TODO: Abrir popup, fechar tela atual
-                    TrelloPowerUp.iframe().closePopup();
+                    // TrelloPowerUp.iframe().closePopup();
                 });
         }
     }
