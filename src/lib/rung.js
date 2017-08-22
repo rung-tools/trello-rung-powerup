@@ -12,7 +12,7 @@ const rung = {
 };
 
 export function login(email, password) {
-    return agent.post(rung.route('/session'))
+    return agent.put(rung.route('/session'))
         .send({ email, password })
         .withCredentials()
         .then(res => res.body);
