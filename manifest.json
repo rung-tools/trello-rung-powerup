@@ -2,7 +2,7 @@
     "name": "Rung",
     "details": "Get up to date about your Rung alerts inside Trello!",
     "icon": {
-        "url": "./assets/rung.png"
+        "url": "./resources/rung.png"
     },
     "author": "Rung Developers Team",
     "capabilities": [
