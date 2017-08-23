@@ -106,7 +106,7 @@ export default class LoginForm extends Component {
             return oauth(sessionToken)
                 .then(url => {
                     console.log(url);
-                    trello.authorize(url, { height: 680, width: 580 })
+                    trello.authorize(url, { height: 680, width: 580, validToken: () => true })
                         .then(token => {
                             console.log('autorizei', token);
                         });
