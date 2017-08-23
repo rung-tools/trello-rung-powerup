@@ -21,7 +21,7 @@ const listExtensions = trello => getExtensions()
             title: 'Extensions',
             items,
             search: {
-                count: 20,
+                count: items.length,
                 placeholder: 'Search extensions',
                 empty: 'No extensions found'
             }
