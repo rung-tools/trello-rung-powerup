@@ -27,11 +27,6 @@ TrelloPowerUp.initialize({
           target: 'Trello Developer Site' // optional target for above url
         }];
     },
-    'show-settings': trello =>
-        trello.popup({
-            title: 'Rung settings',
-            url: 'settings.html'
-        }),
     'authorization-status': trello => trello.get('board', 'private', 'sessionToken')
         .then(sessionToken => sessionToken
             ? agent.get(rung.route('/oauth'))
