@@ -5,6 +5,10 @@ import { rung } from './rung';
 
 const agent = promisifyAgent(superagent, Promise);
 
+function linkToRung(trello) {
+    console.log(trello);
+}
+
 /* global TrelloPowerUp */
 TrelloPowerUp.initialize({
     'board-buttons': () => [{
@@ -15,7 +19,7 @@ TrelloPowerUp.initialize({
     'card-buttons': () => [{
         icon: './resources/rung.png',
         text: 'Link to Rung',
-        callback: () => { console.log('click!') }
+        callback: linkToRung
     }],
     'authorization-status': trello => trello.get('board', 'private', 'sessionToken')
         .then(sessionToken => sessionToken
