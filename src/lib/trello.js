@@ -12,6 +12,13 @@ TrelloPowerUp.initialize({
         text: 'Rung',
         url: 'https://app.rung.com.br/'
     }],
+    'card-buttons': () => [{
+        icon: 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg',
+        text: 'Link to Rung',
+        callback: () => {
+            console.log('click');
+        }
+    }],
     'show-settings': trello =>
         trello.popup({
             title: 'Rung settings',
@@ -30,9 +37,4 @@ TrelloPowerUp.initialize({
             url: 'auth.html',
             height: 250
         }),
-    'card-buttons': () => [{
-        icon: './resources/rung-white.png',
-        text: 'Rung',
-        callback: () => {}
-    }]
 });
