@@ -17,7 +17,7 @@ TrelloPowerUp.initialize({
         url: 'https://app.rung.com.br/'
     }],
     'card-buttons': () => [{
-        icon: './resources/rung.png',
+        icon: './resources/rung-gray.png',
         text: 'Link to Rung',
         callback: linkToRung
     }],
