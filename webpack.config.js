@@ -23,10 +23,13 @@ const staticAssetsPlugin = new CopyWebpackPlugin([
 ]);
 
 module.exports = {
-    entry: ['./src/App.jsx'],
+    entry: {
+        trello: './src/lib/trello.js',
+        index: './src/App.jsx'
+    },
     output: {
         path: publicPath,
-        filename: 'index.min.js'
+        filename: '[name].min.js'
     },
     resolve: {
         extensions: ['.js', '.jsx']

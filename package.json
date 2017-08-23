@@ -8,11 +8,10 @@
   "license": "MIT",
   "scripts": {
     "start": "node server.js",
-    "build": "webpack && npm run build:index",
+    "build": "webpack",
     "build:production": "webpack -p && npm run build:index",
     "lint": "xo",
-    "dev": "yarn build && yarn start",
-    "build:index": "babel src/lib/trello.js --out-file public/trello.min.js"
+    "dev": "yarn build && yarn start"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
