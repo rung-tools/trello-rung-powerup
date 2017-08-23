@@ -19,7 +19,7 @@ TrelloPowerUp.initialize({
     'card-buttons': () => [{
         icon: './resources/rung.png',
         text: 'Link to Rung',
-        callback: linkToRung
+        url: 'https://app.rung.com.br'
     }],
     'authorization-status': trello => trello.get('board', 'private', 'sessionToken')
         .then(sessionToken => sessionToken
