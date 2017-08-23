@@ -12,7 +12,7 @@ export const rung = {
 };
 
 export function getExtensions() {
-    return agent.get(rung.route('/home'))
+    return agent.get(rung.route('/extensions/home'))
         .then(res => res.body);
 }
 
