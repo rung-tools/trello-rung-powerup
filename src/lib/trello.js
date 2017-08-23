@@ -5,7 +5,7 @@ import { rung } from './rung';
 
 const agent = promisifyAgent(superagent, Promise);
 
-const linkToRung = (trello) => {
+const linkToRung = trello => {
     console.log(trello);
 }
 
