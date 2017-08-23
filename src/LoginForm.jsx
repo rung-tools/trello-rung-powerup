@@ -19,7 +19,7 @@ const styles = {
         overflow: 'hidden'
     },
     logo: {
-        height: '42px',
+        height: '32px',
         margin: '20px 0'
     },
     logoContainer: {
