@@ -13,7 +13,7 @@ TrelloPowerUp.initialize({
         url: 'https://app.rung.com.br/'
     }],
     'card-buttons': () => [{
-        icon: 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg',
+        icon: './resources/rung.png',
         text: 'Link to Rung',
         callback: () => { console.log('click!') }
     }],
