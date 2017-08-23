@@ -5,17 +5,18 @@ import { rung, getExtensions } from './rung';
 
 const agent = promisifyAgent(superagent, Promise);
 
-const openOverlay = (name, title) => trello => trello.modal({
+const extensionModal = (name, title) => trello => trello.modal({
     url: `http://35.165.157.18/trello/${name}`,
     accentColor: '#0067B0',
     fullscreen: false,
+    height: 500,
     title
 });
 
 const listExtensions = trello => getExtensions()
     .then(extensions => {
         const items = extensions.map(({ name, title }) => ({
-            text: title, callback: openOverlay(name, title) }));
+            text: title, callback: extensionModal(name, title) }));
         return trello.popup({
             title: 'Extensions',
             items,
