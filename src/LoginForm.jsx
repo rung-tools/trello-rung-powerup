@@ -104,14 +104,14 @@ export default class LoginForm extends Component {
         console.log('definidinho bb');
         // if (!authorized) {
             return oauth(sessionToken)
-                .then(url => trello.authorize(url, { height: 680, width: 580 })
-                    .then(eita => {
-                        console.log('----', eita);
-                        return eita;
-                    }))
-                .finally(() => {
+                .then(url => {
                     trello.closePopup();
-                })
+                    trello.authorize(url, { height: 680, width: 580 })
+                        .then(eita => {
+                            console.log('----', eita);
+                            return eita;
+                        })
+                });
         // }
     }
 
