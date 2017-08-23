@@ -109,12 +109,12 @@ export default class LoginForm extends Component {
                                 .then(eita => {
                                     console.log('----', eita);
                                     return eita;
-                                })
+                                });
                         });
                 }
 
                 trello.closePopup();
-            })
+            });
     }
 
     handleSubmit() {
