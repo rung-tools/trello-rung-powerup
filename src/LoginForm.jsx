@@ -104,16 +104,13 @@ export default class LoginForm extends Component {
         console.log('definidinho bb');
         // if (!authorized) {
             return oauth(sessionToken)
-                .then(url => {
-                    console.log(url);
-                    trello.authorize(url, { height: 680, width: 580, validToken: () => true })
-                        .then(token => {
-                            console.log('autorizei', token);
-                        })
-                        .catch(err => {
-                            console.log('boooo');
-                        });
-                });
+                .then(url => trello.authorize(url, { height: 680, width: 580 }))
+                .then(token => {
+                    console.log('autorizei', token);
+                })
+                .finally(() => {
+                    trello.closePopup();
+                })
         // }
     }
 
