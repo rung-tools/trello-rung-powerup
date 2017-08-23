@@ -100,21 +100,27 @@ export default class LoginForm extends Component {
         const trello = TrelloPowerUp.iframe();
 
         this.setState({ loading: false, error: false, password: '' });
-        trello.set('board', 'private', { sessionToken });
-        console.log('definidinho bb');
-        if (!authorized) {
-            return oauth(sessionToken)
-                .then(url => {
-                    trello.closePopup();
-                    trello.authorize(url, { height: 680, width: 580 })
-                        .then(eita => {
-                            console.log('----', eita);
-                            return eita;
-                        })
-                });
-        }
+        console.log('handle success');
+        return trello.set('board', 'private', { sessionToken })
+            .then(() => {
+                console.log('after set');
+                if (!authorized) {
+                    console.log('not authorized');
+                    return oauth(sessionToken)
+                        .then(url => {
+                            console.log('after oauth, open window');
+                            trello.closePopup();
+                            trello.authorize(url, { height: 680, width: 580 })
+                                .then(eita => {
+                                    console.log('----', eita);
+                                    return eita;
+                                })
+                        });
+                }
 
-        trello.closePopup();
+                console.log('already authorized');
+                trello.closePopup();
+            })
     }
 
     handleSubmit() {
