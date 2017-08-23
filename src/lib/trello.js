@@ -12,13 +12,21 @@ TrelloPowerUp.initialize({
         text: 'Rung',
         url: 'https://app.rung.com.br/'
     }],
-    'card-buttons': () => [{
-        icon: 'https://cdn.hyperdev.com/us-east-1%3A3d31b21c-01a0-4da2-8827-4bc6e88b7618%2Ficon-gray.svg',
-        text: 'Link to Rung',
-        callback: () => {
-            console.log('click');
-        }
-    }],
+    'card-buttons': function (t, opts) {
+        return [{
+          // usually you will provide a callback function to be run on button click
+          // we recommend that you use a popup on click generally
+          icon: GRAY_ICON, // don't use a colored icon here
+          text: 'Open Popup',
+          callback: () => {}
+        }, {
+          // but of course, you could also just kick off to a url if that's your thing
+          icon: GRAY_ICON,
+          text: 'Just a URL',
+          url: 'https://developers.trello.com',
+          target: 'Trello Developer Site' // optional target for above url
+        }];
+    },
     'show-settings': trello =>
         trello.popup({
             title: 'Rung settings',
