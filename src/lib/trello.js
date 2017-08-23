@@ -21,6 +21,7 @@ TrelloPowerUp.initialize({
         .then(sessionToken => sessionToken
             ? agent.get(rung.route('/oauth'))
                 .query({ sessionToken })
+                .then(res => res.body)
             : { authorized: false }),
     'show-authorization': trello =>
         trello.popup({
