@@ -5,9 +5,14 @@ import { rung, getExtensions } from './rung';
 
 const agent = promisifyAgent(superagent, Promise);
 
+const openOverlay = name => trello => trello.overlay({
+    url: `https://app.rung.com.br/trello/${name}`
+});
+
 const listExtensions = trello => getExtensions()
     .then(extensions => {
-        const items = extensions.map(({ name, title }) => ({ text: title, callback: () => {} }));
+        const items = extensions.map(({ name, title }) => ({
+            text: title, callback: openOverlay(name) }));
         return trello.popup({
             title: 'Extensions',
             items,
