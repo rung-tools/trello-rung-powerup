@@ -10,7 +10,11 @@ TrelloPowerUp.initialize({
             title: 'Rung settings',
             url: 'settings.html'
         }),
-    'authorization-status': () => ({ authorized: false }),
+    'authorization-status': trello => trello.get('board', 'private', 'sessionToken')
+        ,// .then(sessionToken => sessionToken ?  : { authorized: false }),
+        /**
+         * Dá um /GET em /api/trello/oauth passando o sessionToken como query ?sessionToken=
+         */
     'show-authorization': trello =>
         trello.popup({
             title: 'Connect with Rung!',
