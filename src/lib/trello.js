@@ -6,7 +6,7 @@ import { rung, getExtensions } from './rung';
 const agent = promisifyAgent(superagent, Promise);
 
 const extensionModal = (name, title) => trello => trello.modal({
-    url: `http://35.165.157.18/trello/${name}`,
+    url: `https://app.rung.com.br/trello/${name}`,
     accentColor: '#0067B0',
     fullscreen: false,
     height: 540,
