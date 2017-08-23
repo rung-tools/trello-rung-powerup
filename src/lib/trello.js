@@ -6,7 +6,7 @@ import { rung, getExtensions } from './rung';
 const agent = promisifyAgent(superagent, Promise);
 
 const openOverlay = name => trello => trello.overlay({
-    url: `https://app.rung.com.br/trello/${name}`
+    url: `http://35.165.157.18/trello/${name}`
 });
 
 const listExtensions = trello => getExtensions()
