@@ -109,6 +109,9 @@ export default class LoginForm extends Component {
                     trello.authorize(url, { height: 680, width: 580, validToken: () => true })
                         .then(token => {
                             console.log('autorizei', token);
+                        })
+                        .catch(err => {
+                            console.log('boooo');
                         });
                 });
         // }
