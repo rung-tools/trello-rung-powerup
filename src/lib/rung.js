@@ -4,7 +4,7 @@ import promisifyAgent from 'superagent-promise';
 
 const agent = promisifyAgent(superagent, Promise);
 
-const rung = {
+export const rung = {
     api: 'https://app.rung.com.br/api/trello',
     route(path) {
         return rung.api + path;

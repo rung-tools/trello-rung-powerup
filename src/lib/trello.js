@@ -1,3 +1,10 @@
+import Promise from 'bluebird';
+import superagent from 'superagent';
+import promisifyAgent from 'superagent-promise';
+import { rung } from './rung';
+
+const agent = promisifyAgent(superagent, Promise);
+
 /* global TrelloPowerUp */
 TrelloPowerUp.initialize({
     'board-buttons': () => [{
@@ -11,10 +18,10 @@ TrelloPowerUp.initialize({
             url: 'settings.html'
         }),
     'authorization-status': trello => trello.get('board', 'private', 'sessionToken')
-        ,// .then(sessionToken => sessionToken ?  : { authorized: false }),
-        /**
-         * Dá um /GET em /api/trello/oauth passando o sessionToken como query ?sessionToken=
-         */
+        .then(sessionToken => sessionToken
+            ? agent.get(rung.route('/oauth'))
+                .query({ sessionToken })
+            : { authorized: false }),
     'show-authorization': trello =>
         trello.popup({
             title: 'Connect with Rung!',
