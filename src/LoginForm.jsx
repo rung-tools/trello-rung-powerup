@@ -102,7 +102,7 @@ export default class LoginForm extends Component {
         this.setState({ loading: false, error: false, password: '' });
         trello.set('board', 'private', { sessionToken });
         console.log('definidinho bb');
-        // if (!authorized) {
+        if (!authorized) {
             return oauth(sessionToken)
                 .then(url => {
                     trello.closePopup();
@@ -112,7 +112,9 @@ export default class LoginForm extends Component {
                             return eita;
                         })
                 });
-        // }
+        }
+
+        trello.closePopup();
     }
 
     handleSubmit() {
