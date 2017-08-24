@@ -11,6 +11,12 @@ export const rung = {
     }
 };
 
+export function getAlerts(extensionId, sessionToken) {
+    return agent.get(rung.route(`/extensions/${extensionId}/alerts`))
+        .query({ sessionToken })
+        .then(res => res.body);
+}
+
 export function getExtensions() {
     return agent.get(rung.route('/extensions/home'))
         .then(res => res.body);
