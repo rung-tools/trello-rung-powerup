@@ -10,7 +10,7 @@ trello.render(() => {
     getAlerts(tempId, sessionToken)
         .then(alerts => {
             content.innerHTML = alerts
-                .map(alert => `<div style="display: inline-table">${alert.content}</div>`)
+                .map(alert => `<div style="display: inline">${alert.content}</div>`)
                 .join('');
         })
         .catch(err => {
