@@ -8,10 +8,6 @@ const agent = promisifyAgent(superagent, Promise);
 
 const extensionModal = (name, title) => trello =>
     trello.get('board', 'private', 'sessionToken')
-        .then(x => {
-            console.log('tok', x);
-            return x;
-        })
         .then(sessionToken =>
             trello.modal({
                 url: `https://app.rung.com.br/trello/${name}`,
@@ -41,17 +37,18 @@ const listExtensions = trello => getExtensions()
 TrelloPowerUp.initialize({
     'attachment-sections': (trello, options) => {
         const claimed = options.entries.filter(att => att.url.indexOf('https://app.rung.com.br') === 0);
-        return [{
-            id: 'AlertsByRung',
-            claimed,
-            icon: GRAY_ICON,
-            title: 'Alerts By Rung',
-            content: {
-                type: 'iframe',
-                url: trello.signUrl('./attachments.html'),
-                height: 50
-            }
-        }];
+        return trello.get('board', 'private', 'sessionToken')
+            .then(sessionToken => [{
+                id: 'AlertsByRung',
+                claimed,
+                icon: GRAY_ICON,
+                title: 'Alerts By Rung',
+                content: {
+                    type: 'iframe',
+                    url: trello.signUrl('./attachments.html', { sessionToken }),
+                    height: 50
+                }
+            }]);
     },
     'board-buttons': () => [{
         icon: './resources/rung-white.png',

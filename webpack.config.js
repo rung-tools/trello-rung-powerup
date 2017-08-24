@@ -27,7 +27,8 @@ const staticAssetsPlugin = new CopyWebpackPlugin([
 module.exports = {
     entry: {
         trello: './src/lib/trello.js',
-        index: './src/App.jsx'
+        index: './src/App.jsx',
+        attachments: './src/lib/attachments.js'
     },
     output: {
         path: publicPath,
