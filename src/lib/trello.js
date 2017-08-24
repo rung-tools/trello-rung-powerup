@@ -38,9 +38,9 @@ TrelloPowerUp.initialize({
     'attachment-sections': (trello, { entries }) => {
         const claimed = entries.filter(attachment => attachment.url.indexOf('https://app.rung.com.br') === 0);
 
-        if (claimed.length === 0) {
-            return [];
-        }
+        // if (claimed.length === 0) {
+            // return [];
+        // }
 
         return [{
             id: 'Alerts by Rung',
