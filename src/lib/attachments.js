@@ -9,7 +9,9 @@ trello.render(() => {
     const content = document.getElementById('content');
     getAlerts(tempId, sessionToken)
         .then(alerts => {
-            content.innerHTML = alerts.map(alert => alert.content).join('<br />');
+            content.innerHTML = alerts
+                .map(alert => `<div style="display: inline-table">${alert.content}</div>`)
+                .join('');
         })
         .catch(err => {
             if (err.status === 401 || err.status === 403) {
