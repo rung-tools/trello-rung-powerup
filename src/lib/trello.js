@@ -43,7 +43,7 @@ TrelloPowerUp.initialize({
         // }
 
         return [{
-            id: 'Alerts by Rung',
+            id: 'AlertsByRung',
             claimed,
             icon: GRAY_ICON,
             title: 'Alerts by Rung',
