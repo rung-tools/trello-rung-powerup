@@ -12,7 +12,7 @@ export const rung = {
 };
 
 export function getAlerts(extensionId, sessionToken) {
-    return agent.get(rung.route(`/extensions/${extensionId}/alerts`))
+    return agent.get(rung.route(`/trello/extensions/${extensionId}/alerts`))
         .query({ sessionToken })
         .then(res => res.body);
 }
