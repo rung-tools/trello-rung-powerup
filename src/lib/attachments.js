@@ -9,7 +9,12 @@ trello.render(() => {
     const content = document.getElementById('content');
     getAlerts(tempId, sessionToken)
         .then(alerts => {
-            content.innerHTML = alerts.map(alert => alert.content).join('');
+            const sandbox = html => `
+                <div style="position: relative; width: 173px; height: 30px;">
+                    ${html}
+                </div>
+            `;
+            content.innerHTML = alerts.map(alert => sandbox(alert.content)).join('');
         })
         .catch(err => {
             if (err.status === 401 || err.status === 403) {
