@@ -8,6 +8,10 @@ const agent = promisifyAgent(superagent, Promise);
 
 const extensionModal = (name, title) => trello =>
     trello.get('board', 'private', 'sessionToken')
+        .then(x => {
+            console.log('tok', x);
+            return x;
+        })
         .then(sessionToken =>
             trello.modal({
                 url: `https://app.rung.com.br/trello/${name}`,
