@@ -5,13 +5,17 @@ import { rung, getExtensions } from './rung';
 
 const agent = promisifyAgent(superagent, Promise);
 
-const extensionModal = (name, title) => trello => trello.modal({
-    url: `https://app.rung.com.br/trello/${name}`,
-    accentColor: '#0067B0',
-    fullscreen: false,
-    height: 540,
-    title
-});
+const extensionModal = (name, title) => trello =>
+    trello.get('board', 'private', 'sessionToken')
+        .then(sessionToken =>
+            trello.modal({
+                url: `https://app.rung.com.br/trello/${name}`,
+                accentColor: '#0067B0',
+                fullscreen: false,
+                height: 540,
+                args: { sessionToken },
+                title
+            }));
 
 const listExtensions = trello => getExtensions()
     .then(extensions => {
