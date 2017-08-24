@@ -8,6 +8,6 @@ trello.render(() => {
     const tempId = '593bdb87b43ac0601189b497';
     getAlerts(tempId, sessionToken)
         .then(alerts => {
-            console.log(alerts);
+            document.getElementById('content').innerHTML = alerts.map(alerts.content).join('<br />');
         });
 });
