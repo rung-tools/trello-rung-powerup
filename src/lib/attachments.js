@@ -18,7 +18,7 @@ trello.render(() => {
                 ['padding', '5px']
             ];
             const sandbox = html => `
-                <div style="${styles.map(([key, value]) => `${key}: ${value}`).join('')}">
+                <div style="${styles.map(([key, value]) => `${key}: ${value}`).join(';')}">
                     ${html}
                 </div>
             `;
