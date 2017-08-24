@@ -12,5 +12,5 @@ trello.render(() => {
         })
         .then(() => {
             trello.sizeTo('#content');
-        })
+        });
 });
