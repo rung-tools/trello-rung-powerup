@@ -5,13 +5,11 @@ const trello = TrelloPowerUp.iframe();
 const sessionToken = trello.arg('sessionToken');
 
 trello.render(() => {
-    const tempId = '59428fee79fc4f7c85c7e4e2';
+    const tempId = '59428f8abd8b257c7bc006cd';
     const content = document.getElementById('content');
     getAlerts(tempId, sessionToken)
         .then(alerts => {
-            content.innerHTML = alerts
-                .map(alert => `<div style="display: inline">${alert.content}</div>`)
-                .join('');
+            content.innerHTML = alerts.map(alert => alert.content).join('');
         })
         .catch(err => {
             if (err.status === 401 || err.status === 403) {
