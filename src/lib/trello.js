@@ -3,6 +3,7 @@ import superagent from 'superagent';
 import promisifyAgent from 'superagent-promise';
 import { rung, getExtensions } from './rung';
 
+const GRAY_ICON = './resources/rung-gray.png';
 const agent = promisifyAgent(superagent, Promise);
 
 const extensionModal = (name, title) => trello =>
@@ -34,13 +35,32 @@ const listExtensions = trello => getExtensions()
 
 /* global TrelloPowerUp */
 TrelloPowerUp.initialize({
+    'attachment-sections': (trello, { entries }) => {
+        const claimed = entries.filter(attachment => attachment.url.indexOf('https://app.rung.com.br') === 0);
+
+        if (claimed.length === 0) {
+            return [];
+        }
+
+        return [{
+            id: 'Alerts by Rung',
+            claimed,
+            icon: GRAY_ICON,
+            title: 'Alerts by Rung',
+            content: {
+                type: 'iframe',
+                url: trello.signUrl('./attachments.html'),
+                height: 230
+            }
+        }];
+    },
     'board-buttons': () => [{
         icon: './resources/rung-white.png',
         text: 'Rung',
         url: 'https://app.rung.com.br/'
     }],
     'card-buttons': () => [{
-        icon: './resources/rung-gray.png',
+        icon: GRAY_ICON,
         text: 'Link to Rung',
         callback: listExtensions
     }],

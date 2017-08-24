@@ -16,6 +16,7 @@ const killPlugin = function () {
 const staticAssetsPlugin = new CopyWebpackPlugin([
     { from: path.join(__dirname, 'assets/html/auth.html'), to: publicPath },
     { from: path.join(__dirname, 'assets/html/index.html'), to: publicPath },
+    { from: path.join(__dirname, 'assets/html/attachments.html'), to: publicPath },
     { from: path.join(__dirname, 'manifest.json'), to: publicPath },
     { from: path.join(__dirname, 'assets/images/rung-full-white.png'), to: resourcesPath },
     { from: path.join(__dirname, 'assets/images/rung-white.png'), to: resourcesPath },

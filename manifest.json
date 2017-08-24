@@ -6,6 +6,7 @@
     },
     "author": "Rung Developers Team",
     "capabilities": [
+        "attachment-sections",
         "card-badges",
         "card-buttons",
         "board-buttons",
