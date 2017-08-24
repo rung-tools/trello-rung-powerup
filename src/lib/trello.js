@@ -40,12 +40,14 @@ TrelloPowerUp.initialize({
           return attachment.url.indexOf('http://www.nps.gov/yell/') === 0;
         });
 
+        console.log(options.entries);
+
         // if (claimed && claimed.length > 0) {
           return [{
-            id: 'Yellowstone', // optional if you aren't using a function for the title
+            id: 'AlertsByRung', // optional if you aren't using a function for the title
             claimed: claimed,
             icon: GRAY_ICON,
-            title: 'Example Attachment Section: Yellowstone',
+            title: 'Alets By Rung',
             content: {
               type: 'iframe',
               url: t.signUrl('./attachments.html', {
