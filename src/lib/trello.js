@@ -35,28 +35,20 @@ const listExtensions = trello => getExtensions()
 
 /* global TrelloPowerUp */
 TrelloPowerUp.initialize({
-    'attachment-sections': function(t, options){
-        var claimed = options.entries.filter(function (attachment) {
-          return attachment.url.indexOf('http://www.nps.gov/yell/') === 0;
-        });
-
-        console.log(options.entries);
-
-        // if (claimed && claimed.length > 0) {
-          return [{
-            id: 'AlertsByRung', // optional if you aren't using a function for the title
-            claimed: claimed,
+    'attachment-sections': (trello, options) => {
+        const claimed = options.entries.filter(att => att.url.indexOf('https://app.rung.com.br') === 0);
+        return [{
+            id: 'AlertsByRung',
+            claimed,
             icon: GRAY_ICON,
-            title: 'Alets By Rung',
+            title: 'Alerts By Rung',
             content: {
-              type: 'iframe',
-              url: t.signUrl('./attachments.html', {
-                arg: 'you can pass your section args here'
-              }),
-              height: 230
+                type: 'iframe',
+                url: trello.signUrl('./attachments.html'),
+                height: 230
             }
-          }];
-      },
+        }];
+    },
     'board-buttons': () => [{
         icon: './resources/rung-white.png',
         text: 'Rung',
