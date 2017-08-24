@@ -9,8 +9,16 @@ trello.render(() => {
     const content = document.getElementById('content');
     getAlerts(tempId, sessionToken)
         .then(alerts => {
+            const styles = [
+                ['position', 'relative'],
+                ['width', '173px'],
+                ['height', '130px'],
+                ['display', 'flex'],
+                ['margin', '10px'],
+                ['padding', '5px']
+            ];
             const sandbox = html => `
-                <div style="position: relative; width: 173px; height: 130px;">
+                <div style="${styles.map(([key, value]) => `${key}: ${value}`).join('')}">
                     ${html}
                 </div>
             `;
