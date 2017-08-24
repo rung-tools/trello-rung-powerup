@@ -10,7 +10,7 @@ trello.render(() => {
     getAlerts(tempId, sessionToken)
         .then(alerts => {
             const sandbox = html => `
-                <div style="position: relative; width: 173px; height: 30px;">
+                <div style="position: relative; width: 173px; height: 130px;">
                     ${html}
                 </div>
             `;
