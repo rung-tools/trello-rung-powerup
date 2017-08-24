@@ -5,7 +5,7 @@ const trello = TrelloPowerUp.iframe();
 const sessionToken = trello.arg('sessionToken');
 
 trello.render(() => {
-    const tempId = '59428f8abd8b257c7bc006cd';
+    const tempId = '59428fee79fc4f7c85c7e4e2';
     const content = document.getElementById('content');
     getAlerts(tempId, sessionToken)
         .then(alerts => {
