@@ -74,6 +74,9 @@ const instances = [
 
 const renderAttachments = (trello, options) => {
     const claimed = options.entries.filter(att => att.url.indexOf('https://app.rung.com.br') === 0);
+
+    console.log(claimed);
+
     return trello.get('board', 'private', 'sessionToken')
         .then(sessionToken => instances.map(instance => ({
             id: `AlertsByRung-${instance.name}-${instance.id}`,
