@@ -65,7 +65,7 @@ TrelloPowerUp.initialize({
     }],
     'card-buttons': (trello, options) => [{
         icon: GRAY_ICON,
-        text: 'Link to Rung',
+        text: 'Rung',
         callback: listExtensions(options.context.card)
     }],
     'authorization-status': trello => trello.get('board', 'private', 'sessionToken')
