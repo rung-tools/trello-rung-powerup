@@ -33,23 +33,29 @@ const listExtensions = trello => getExtensions()
         });
     });
 
+const instances = [
+    { name: 'Steam Store', id: '59428fee79fc4f7c85c7e4e2' },
+    { name: 'Airbnb', id: '59428f7379fc4f7c85c7e462' }
+];
+const renderAttachments = (trello, options) => {
+    const claimed = options.entries.filter(att => att.url.indexOf('https://app.rung.com.br') === 0);
+    return trello.get('board', 'private', 'sessionToken')
+        .then(sessionToken => [{
+            id: 'AlertsByRung',
+            claimed,
+            icon: GRAY_ICON,
+            title: 'Alerts By Rung',
+            content: {
+                type: 'iframe',
+                url: trello.signUrl('./attachments.html', { sessionToken, instances }),
+                height: 50
+            }
+        }]);
+};
+
 /* global TrelloPowerUp */
 TrelloPowerUp.initialize({
-    'attachment-sections': (trello, options) => {
-        const claimed = options.entries.filter(att => att.url.indexOf('https://app.rung.com.br') === 0);
-        return trello.get('board', 'private', 'sessionToken')
-            .then(sessionToken => [{
-                id: 'AlertsByRung',
-                claimed,
-                icon: GRAY_ICON,
-                title: 'Alerts By Rung',
-                content: {
-                    type: 'iframe',
-                    url: trello.signUrl('./attachments.html', { sessionToken }),
-                    height: 50
-                }
-            }]);
-    },
+    'attachment-sections': renderAttachments,
     'board-buttons': () => [{
         icon: './resources/rung-white.png',
         text: 'Rung',
