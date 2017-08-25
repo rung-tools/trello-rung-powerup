@@ -25,7 +25,6 @@ trello.render(() => {
             }
         })
         .then(() => {
-            console.log('..');
-            setTimeout(() => trello.sizeTo('#content'), 5000);
+            trello.sizeTo('#content');
         });
 });
