@@ -5,9 +5,9 @@ const trello = TrelloPowerUp.iframe();
 const sessionToken = trello.arg('sessionToken');
 const instance = trello.arg('instance');
 
-const sandbox = ({ html, id }) => `
-    <a href="https://app.rung.com.br/i/${id}" target="_blank">
-        <div class="card custom-scrollbar">${html}</div>
+const sandbox = ({ content, id }) => `
+    <a href="https://app.rung.com.br/i/${id}?ref=trello" target="_blank">
+        <div class="card custom-scrollbar">${content}</div>
     </a>`;
 let viewDidLoad = false;
 
