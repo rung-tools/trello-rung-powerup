@@ -6,8 +6,6 @@ import { rung, getExtensions } from './rung';
 const GRAY_ICON = './resources/rung-gray.png';
 const agent = promisifyAgent(superagent, Promise);
 
-const decodeUtf8 = str => decodeURIComponent(escape(str));
-
 const extensionModal = (name, title, card) => trello =>
     trello.get('board', 'private', 'sessionToken')
         .then(sessionToken =>
@@ -49,7 +47,7 @@ const renderAttachments = (trello, options) => {
             id: `AlertsByRung-${instance.name}-${instance.id}`,
             claimed,
             icon: GRAY_ICON,
-            title: decodeUtf8(instance.name),
+            title: instance.name,
             content: {
                 type: 'iframe',
                 url: trello.signUrl('./attachments.html', { sessionToken, instance })
