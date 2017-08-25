@@ -1,7 +1,7 @@
 import Promise from 'bluebird';
 import superagent from 'superagent';
 import promisifyAgent from 'superagent-promise';
-import { rung, getExtensions } from './rung';
+import { rung, getExtensions, getCategories } from './rung';
 
 const GRAY_ICON = './resources/rung-gray.png';
 const agent = promisifyAgent(superagent, Promise);
@@ -18,7 +18,7 @@ const extensionModal = (name, title, card) => trello =>
                 title
             }));
 
-const listExtensions = card => trello => getExtensions()
+const listExtensions = (alias, card) => trello => getExtensions(alias)
     .then(extensions => {
         const items = extensions.map(({ name, title }) => ({
             text: title, callback: extensionModal(name, title, card) }));
@@ -32,6 +32,19 @@ const listExtensions = card => trello => getExtensions()
             }
         });
     });
+
+const listCategories = card => trello => getCategories()
+    .then(categories => trello.popup({
+        title: 'Extension category',
+        items: categories.map(({ name, alias }) => ({
+            text: name, callback: listExtensions(alias, card)
+        })),
+        search: {
+            count: 10,
+            placeholder: 'Search categories',
+            empty: 'No categories found'
+        }
+    }));
 
 const renderAttachments = (trello, options) => {
     const claimed = options.entries
@@ -66,7 +79,7 @@ TrelloPowerUp.initialize({
     'card-buttons': (trello, options) => [{
         icon: GRAY_ICON,
         text: 'Rung',
-        callback: listExtensions(options.context.card)
+        callback: listCategories(options.context.card)
     }],
     'authorization-status': trello => trello.get('board', 'private', 'sessionToken')
         .then(sessionToken => sessionToken

@@ -17,8 +17,13 @@ export function getAlerts(extensionId, sessionToken) {
         .then(res => res.body);
 }
 
-export function getExtensions() {
-    return agent.get(rung.route('/extensions/home'))
+export function getCategories() {
+    return agent.get(rung.route('/categories'))
+        .then(res => res.body);
+}
+
+export function getExtensions(category) {
+    return agent.get(rung.route(`/extensions/category/${category}`))
         .then(res => res.body);
 }
 
