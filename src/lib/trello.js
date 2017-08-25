@@ -80,7 +80,7 @@ const renderAttachments = (trello, options) => {
             id: `AlertsByRung-${instance.name}-${instance.id}`,
             claimed,
             icon: GRAY_ICON,
-            title: instance.name,
+            title: instance.name.replace(/ç/, '&ccedil;'),
             content: {
                 type: 'iframe',
                 url: trello.signUrl('./attachments.html', { sessionToken, instance })
