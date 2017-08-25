@@ -5,7 +5,7 @@ const trello = TrelloPowerUp.iframe();
 const sessionToken = trello.arg('sessionToken');
 const instance = trello.arg('instance');
 
-const sandbox = (html, id) => `
+const sandbox = ({ html, id }) => `
     <a href="https://app.rung.com.br/i/${id}" target="_blank">
         <div class="card custom-scrollbar">${html}</div>
     </a>`;
@@ -20,7 +20,7 @@ trello.render(() => {
 
     getAlerts(instance.id, sessionToken)
         .then(alerts => {
-            content.innerHTML = alerts.map(({ content, id }) => sandbox(content)).join('');
+            content.innerHTML = alerts.map(sandbox).join('');
         })
         .catch(err => {
             if (err.status === 401 || err.status === 403) {
