@@ -6,7 +6,7 @@ import { rung, getExtensions } from './rung';
 const GRAY_ICON = './resources/rung-gray.png';
 const agent = promisifyAgent(superagent, Promise);
 
-const extensionModal = (name, title) => trello =>
+const extensionModal = (name, title) => (trello, options) =>
     trello.get('board', 'private', 'sessionToken')
         .then(sessionToken =>
             trello.modal({
@@ -14,7 +14,7 @@ const extensionModal = (name, title) => trello =>
                 accentColor: '#0067B0',
                 fullscreen: false,
                 height: 540,
-                args: { sessionToken },
+                args: { sessionToken, card: options.context.card },
                 title
             }));
 
@@ -74,10 +74,6 @@ const instances = [
 
 const renderAttachments = (trello, options) => {
     const claimed = options.entries.filter(att => att.url.indexOf('https://app.rung.com.br') === 0);
-
-    console.log(options);
-
-
     return trello.get('board', 'private', 'sessionToken')
         .then(sessionToken => instances.map(instance => ({
             id: `AlertsByRung-${instance.name}-${instance.id}`,
