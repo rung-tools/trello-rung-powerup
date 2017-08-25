@@ -6,7 +6,10 @@ import { rung, getExtensions } from './rung';
 const GRAY_ICON = './resources/rung-gray.png';
 const agent = promisifyAgent(superagent, Promise);
 
-const extensionModal = (name, title) => (trello, options) =>
+const extensionModal = (name, title) => (trello, options) => {
+
+    console.log(options);
+
     trello.get('board', 'private', 'sessionToken')
         .then(sessionToken =>
             trello.modal({
@@ -14,9 +17,10 @@ const extensionModal = (name, title) => (trello, options) =>
                 accentColor: '#0067B0',
                 fullscreen: false,
                 height: 540,
-                args: { sessionToken, card: options.context.card },
+                args: { sessionToken },
                 title
             }));
+        }
 
 const listExtensions = trello => getExtensions()
     .then(extensions => {
