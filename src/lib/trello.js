@@ -72,13 +72,6 @@ const instances = [
     }
 ];
 
-const encodeEntities = str => {
-    const encodedText = str.replace(/[\u00A0-\u9999<>&]/gim, chr => `&#${chr.charCodeAt(0)};`);
-    const div = document.createElement('div');
-    div.innerHTML = encodedText;
-    return div.innerText;
-}
-
 const renderAttachments = (trello, options) => {
     const claimed = options.entries.filter(att => att.url.indexOf('https://app.rung.com.br') === 0);
     return trello.get('board', 'private', 'sessionToken')
@@ -86,7 +79,7 @@ const renderAttachments = (trello, options) => {
             id: `AlertsByRung-${instance.name}-${instance.id}`,
             claimed,
             icon: GRAY_ICON,
-            title: encodeEntities(instance.name),
+            title: instance.name,
             content: {
                 type: 'iframe',
                 url: trello.signUrl('./attachments.html', { sessionToken, instance })
