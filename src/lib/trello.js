@@ -7,7 +7,7 @@ const GRAY_ICON = './resources/rung-gray.png';
 const agent = promisifyAgent(superagent, Promise);
 
 const extensionModal = (name, title, card) => trello =>
-    trello.get('board', 'private', 'sessionToken')
+    trello.get('member', 'private', 'sessionToken')
         .then(sessionToken =>
             trello.modal({
                 url: `https://app.rung.com.br/trello/${name}`,
@@ -55,7 +55,7 @@ const renderAttachments = (trello, options) => {
         id: instance.url.match(/[0-9a-f]{24}/i)[0]
     }));
 
-    return trello.get('board', 'private', 'sessionToken')
+    return trello.get('member', 'private', 'sessionToken')
         .then(sessionToken => instances.map(instance => ({
             id: `AlertsByRung-${instance.name}-${instance.id}`,
             claimed,
@@ -81,7 +81,7 @@ TrelloPowerUp.initialize({
         text: 'Rung',
         callback: listCategories(options.context.card)
     }],
-    'authorization-status': trello => trello.get('board', 'private', 'sessionToken')
+    'authorization-status': trello => trello.get('member', 'private', 'sessionToken')
         .then(sessionToken => sessionToken
             ? agent.get(rung.route('/trello/oauth'))
                 .query({ sessionToken })
