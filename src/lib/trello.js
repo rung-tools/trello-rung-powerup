@@ -75,18 +75,10 @@ const instances = [
 const renderAttachments = (trello, options) => {
     const claimed = options.entries.filter(att => att.url.indexOf('https://app.rung.com.br') === 0);
 
-    console.log(claimed);
-
     return trello.get('board', 'private', 'sessionToken')
         .then(sessionToken => instances.map(instance => ({
             id: `AlertsByRung-${instance.name}-${instance.id}`,
-            claimed: [{
-                edgeColor: null,
-                id: 'https://app.rung.com.br/extensions/${instance.id}`',
-                name: `https://app.rung.com.br/extensions/${instance.id}`,
-                previews: [],
-                url: `https://app.rung.com.br/extensions/${instance.id}`
-            }],
+            claimed,
             icon: GRAY_ICON,
             title: instance.name,
             content: {
