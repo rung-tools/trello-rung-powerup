@@ -80,7 +80,13 @@ const renderAttachments = (trello, options) => {
     return trello.get('board', 'private', 'sessionToken')
         .then(sessionToken => instances.map(instance => ({
             id: `AlertsByRung-${instance.name}-${instance.id}`,
-            claimed,
+            claimed: {
+                edgeColor: null,
+                id: null,
+                name: `https://app.rung.com.br/extensions/${instance.id}`,
+                previews: [],
+                url: `https://app.rung.com.br/extensions/${instance.id}`
+            },
             icon: GRAY_ICON,
             title: instance.name,
             content: {
