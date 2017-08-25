@@ -6,7 +6,7 @@ import { rung, getExtensions } from './rung';
 const GRAY_ICON = './resources/rung-gray.png';
 const agent = promisifyAgent(superagent, Promise);
 
-const removeAccents = str => str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+const decodeUtf8 = str => decodeURIComponent(escape(str));
 
 const extensionModal = (name, title, card) => trello =>
     trello.get('board', 'private', 'sessionToken')
@@ -73,7 +73,7 @@ const renderAttachments = (trello, options) => {
             id: `AlertsByRung-${instance.name}-${instance.id}`,
             claimed,
             icon: GRAY_ICON,
-            title: removeAccents(instance.name),
+            title: decodeUtf8(instance.name),
             content: {
                 type: 'iframe',
                 url: trello.signUrl('./attachments.html', { sessionToken, instance })
