@@ -1,16 +1,18 @@
 {
-    "name": "Rung",
+    "name": " Alerts by Rung",
     "details": "Get up to date about your Rung alerts inside Trello!",
     "icon": {
-        "url": "./assets/rung.png"
+        "url": "./resources/rung.png"
     },
     "author": "Rung Developers Team",
     "capabilities": [
+        "attachment-sections",
         "card-badges",
+        "card-buttons",
         "board-buttons",
-        "show-settings",
         "authorization-status",
-        "show-authorization"
+        "show-authorization",
+        "callback"
     ],
     "connectors": {
         "iframe": {

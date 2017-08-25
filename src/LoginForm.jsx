@@ -19,8 +19,12 @@ const styles = {
         overflow: 'hidden'
     },
     logo: {
-        width: 'calc(100% - 40px)',
-        margin: '30px 20px',
+        height: '32px',
+        margin: '20px 0'
+    },
+    logoContainer: {
+        width: '100%',
+        textAlign: 'center',
         maxWidth: '460px'
     },
     copyright: {
@@ -92,15 +96,25 @@ export default class LoginForm extends Component {
         }, 500);
     }
 
-    handleSuccess({ oauth: alreadyAuthorized, token }) {
+    handleSuccess({ authorized, sessionToken }) {
+        const trello = TrelloPowerUp.iframe();
         this.setState({ loading: false, error: false, password: '' });
-        if (!alreadyAuthorized) {
-            return oauth(token)
-                .then(url => {
-                    // TODO: Abrir popup, fechar tela atual
-                    TrelloPowerUp.iframe().closePopup();
-                });
-        }
+        return trello.set('member', 'private', { sessionToken })
+            .then(() => {
+                if (!authorized) {
+                    return oauth(sessionToken)
+                        .then(url => {
+                            trello.closePopup();
+                            trello.authorize(url, { height: 680, width: 580 })
+                                .then(eita => {
+                                    console.log('----', eita);
+                                    return eita;
+                                });
+                        });
+                }
+
+                trello.closePopup();
+            });
     }
 
     handleSubmit() {
@@ -120,7 +134,9 @@ export default class LoginForm extends Component {
     render() {
         return (
             <div style={ Object.assign({}, styles.container, { maxWidth: this.state.maxWidth }) }>
-                <img src={ rung } style={ styles.logo } draggable={ false } />
+                <div style={ styles.logoContainer }>
+                    <img src={ rung } style={ styles.logo } draggable={ false } />
+                </div>
                 <input
                     autofocus={ true }
                     type="text"

@@ -2,6 +2,7 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const publicPath = path.join(__dirname, 'public');
+const resourcesPath = path.join(publicPath, 'resources');
 
 const killPlugin = function () {
     this.plugin('done', stats => {
@@ -13,15 +14,25 @@ const killPlugin = function () {
 };
 
 const staticAssetsPlugin = new CopyWebpackPlugin([
+    { from: path.join(__dirname, 'assets/html/auth.html'), to: publicPath },
     { from: path.join(__dirname, 'assets/html/index.html'), to: publicPath },
-    { from: path.join(__dirname, 'manifest.json'), to: publicPath }
+    { from: path.join(__dirname, 'assets/html/attachments.html'), to: publicPath },
+    { from: path.join(__dirname, 'manifest.json'), to: publicPath },
+    { from: path.join(__dirname, 'assets/images/rung-full-white.png'), to: resourcesPath },
+    { from: path.join(__dirname, 'assets/images/rung-white.png'), to: resourcesPath },
+    { from: path.join(__dirname, 'assets/images/rung-gray.png'), to: resourcesPath },
+    { from: path.join(__dirname, 'assets/images/rung.png'), to: resourcesPath }
 ]);
 
 module.exports = {
-    entry: ['./src/App.jsx'],
+    entry: {
+        trello: './src/lib/trello.js',
+        index: './src/App.jsx',
+        attachments: './src/lib/attachments.js'
+    },
     output: {
         path: publicPath,
-        filename: 'index.min.js'
+        filename: '[name].min.js'
     },
     resolve: {
         extensions: ['.js', '.jsx']
