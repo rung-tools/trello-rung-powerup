@@ -52,7 +52,7 @@ module.exports = {
                         options: {
                             name: 'resources/[name].[ext]'
                         }
-                    }
+                    },
                     {
                         loader: 'image-webpack-loader',
                         options: {
