@@ -6,7 +6,7 @@ const sessionToken = trello.arg('sessionToken');
 const instance = trello.arg('instance');
 
 const sandbox = (html, id) => `
-    <a href="https://app.rung.com.br/i/${id}">
+    <a href="https://app.rung.com.br/i/${id}" target="_blank">
         <div class="card custom-scrollbar">${html}</div>
     </a>`;
 let viewDidLoad = false;
