@@ -11,6 +11,7 @@
     "build": "rm -rf public && webpack",
     "build:production": "rm -rf public && webpack -p",
     "lint": "xo",
+    "lint:fix": "xo --fix",
     "dev": "yarn build && yarn start"
   },
   "dependencies": {
