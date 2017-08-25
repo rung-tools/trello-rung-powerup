@@ -53,20 +53,20 @@ module.exports = {
                             name: 'resources/[name].[ext]'
                         }
                     }
-                    // {
-                    //     loader: 'image-webpack-loader',
-                    //     options: {
-                    //         query: {
-                    //             bypassOnDebug: true,
-                    //             optipng: {
-                    //                 optimizationLevel: 7
-                    //             },
-                    //             gifsicle: {
-                    //                 interlaced: true
-                    //             }
-                    //         }
-                    //     }
-                    // }
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            query: {
+                                bypassOnDebug: true,
+                                optipng: {
+                                    optimizationLevel: 7
+                                },
+                                gifsicle: {
+                                    interlaced: true
+                                }
+                            }
+                        }
+                    }
                 ]
             }
         ]
