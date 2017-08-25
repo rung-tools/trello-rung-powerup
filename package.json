@@ -54,7 +54,6 @@
         "WhileStatement",
         "SwitchStatement",
         "VariableDeclaration[kind='var']",
-        "VariableDeclaration[kind='let']",
         "TryStatement"
       ],
       "no-unused-vars": [

@@ -40,17 +40,16 @@ const instances = [
 const renderAttachments = (trello, options) => {
     const claimed = options.entries.filter(att => att.url.indexOf('https://app.rung.com.br') === 0);
     return trello.get('board', 'private', 'sessionToken')
-        .then(sessionToken => [{
-            id: 'AlertsByRung',
+        .then(sessionToken => instances.map(instance => ({
+            id: `AlertsByRung-${instance.name}-${instance.id}`,
             claimed,
             icon: GRAY_ICON,
-            title: 'Alerts By Rung',
+            title: instance.name,
             content: {
                 type: 'iframe',
-                url: trello.signUrl('./attachments.html', { sessionToken, instances }),
-                height: 50
+                url: trello.signUrl('./attachments.html', { sessionToken, instance })
             }
-        }]);
+        })));
 };
 
 /* global TrelloPowerUp */
