@@ -5,7 +5,7 @@ const trello = TrelloPowerUp.iframe();
 const sessionToken = trello.arg('sessionToken');
 const instance = trello.arg('instance');
 
-const sandbox = html => `<div class="card">${html}</div>`;
+const sandbox = html => `<div class="card custom-scrollbar">${html}</div>`;
 let viewDidLoad = false;
 
 trello.render(() => {
