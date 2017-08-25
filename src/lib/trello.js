@@ -67,10 +67,14 @@ const instances = [
 ];
 
 const renderAttachments = (trello, options) => {
+    const claimed = options.entries
+        .filter(att => att.url.indexOf('https://app.rung.com.br/api/trello/extensions/') === 0);
 
-    console.log(options.entries);
+    const instances = claimed.map(instance => ({
+        name: instance.name,
+        id: instance.url.match(/[0-9a-f]{24}/i)[0]
+    }));
 
-    const claimed = []; // options.entries.filter(att => att.url.indexOf('https://app.rung.com.br') === 0);
     return trello.get('board', 'private', 'sessionToken')
         .then(sessionToken => instances.map(instance => ({
             id: `AlertsByRung-${instance.name}-${instance.id}`,
