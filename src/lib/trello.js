@@ -35,37 +35,6 @@ const listExtensions = card => trello => getExtensions()
         });
     });
 
-const instances = [
-    {
-        name: 'Bolsa de valores',
-        id: '593bdb87b43ac0601189b497'
-    },
-    {
-        name: 'Cotação de moeda',
-        id: '593bf3b95c20d86007aebea0'
-    },
-    {
-        name: 'Descontos na Steam',
-        id: '59428fee79fc4f7c85c7e4e2'
-    },
-    {
-        name: 'Filmes Netflix',
-        id: '5956c66e8d6bc75c7402a354'
-    },
-    {
-        name: 'Previsão do tempo',
-        id: '59428f8abd8b257c7bc006cd'
-    },
-    {
-        name: 'Rastreio de objetos nos Correios',
-        id: '59639259f050e47f0d540bef'
-    },
-    {
-        name: 'Reserve acomodações com o Airbnb',
-        id: '59428f7379fc4f7c85c7e462'
-    }
-];
-
 const renderAttachments = (trello, options) => {
     const claimed = options.entries
         .filter(att => att.url.indexOf('https://app.rung.com.br/api/trello/extensions/') === 0);
