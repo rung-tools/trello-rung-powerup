@@ -37,7 +37,7 @@ const listExtensions = card => trello => getExtensions()
 
 const renderAttachments = (trello, options) => {
     const claimed = options.entries
-        .filter(att => att.url.indexOf('https://app.rung.com.br/api/trello/extensions/') === 0);
+        .filter(att => att.url.indexOf('https://app.rung.com.br/') === 0);
 
     const instances = claimed.map(instance => ({
         name: instance.name,
@@ -45,10 +45,7 @@ const renderAttachments = (trello, options) => {
     }));
 
     return trello.get('board', 'private', 'sessionToken')
-        .then(sessionToken => instances.map(instance => {
-
-            debugger;
-            const res = ({
+        .then(sessionToken => instances.map(instance => ({
             id: `AlertsByRung-${instance.name}-${instance.id}`,
             claimed,
             icon: GRAY_ICON,
@@ -57,10 +54,7 @@ const renderAttachments = (trello, options) => {
                 type: 'iframe',
                 url: trello.signUrl('./attachments.html', { sessionToken, instance })
             }
-        });
-
-        return res;
-        }) );
+        })));
 };
 
 /* global TrelloPowerUp */
