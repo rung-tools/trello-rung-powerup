@@ -47,16 +47,8 @@ const instances = [
         id: '59428fee79fc4f7c85c7e4e2'
     },
     {
-        name: 'Documentos vencidos',
-        id: '593bdc02b43ac0601189b49f'
-    },
-    {
         name: 'Filmes Netflix',
         id: '5956c66e8d6bc75c7402a354'
-    },
-    {
-        name: 'Pontuação dos motoristas',
-        id: '593bf5e5e84dab53b5d63b96'
     },
     {
         name: 'Previsão do tempo',
