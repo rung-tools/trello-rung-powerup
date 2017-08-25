@@ -45,7 +45,10 @@ const renderAttachments = (trello, options) => {
     }));
 
     return trello.get('board', 'private', 'sessionToken')
-        .then(sessionToken => instances.map(instance => ({
+        .then(sessionToken => instances.map(instance => {
+
+            debugger;
+            const res = ({
             id: `AlertsByRung-${instance.name}-${instance.id}`,
             claimed,
             icon: GRAY_ICON,
@@ -54,7 +57,10 @@ const renderAttachments = (trello, options) => {
                 type: 'iframe',
                 url: trello.signUrl('./attachments.html', { sessionToken, instance })
             }
-        })));
+        });
+
+        return res;
+        }) );
 };
 
 /* global TrelloPowerUp */
