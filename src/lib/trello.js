@@ -82,7 +82,7 @@ const renderAttachments = (trello, options) => {
             id: `AlertsByRung-${instance.name}-${instance.id}`,
             claimed: {
                 edgeColor: null,
-                id: null,
+                id: '...',
                 name: `https://app.rung.com.br/extensions/${instance.id}`,
                 previews: [],
                 url: `https://app.rung.com.br/extensions/${instance.id}`
