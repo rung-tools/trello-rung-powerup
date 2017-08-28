@@ -27,7 +27,7 @@ const styles = {
         textAlign: 'center',
         maxWidth: '460px'
     },
-    copyright: {
+    register: {
         width: '100%',
         textAlign: 'center',
         paddingTop: '10px'
@@ -165,7 +165,9 @@ export default class LoginForm extends Component {
                         onClick={ this.handleSubmit.bind(this) }>
                         { this.getMessage() }
                     </button>
-                    <div style={ styles.copyright }>Rung &copy; ─ All rights reserved</div>
+                    <div style={ styles.register }>
+                        Don't you have an account? <a href="https://app.rung.com.br/signup">Sign up!</a>
+                    </div>
                 </div>
             </div>
         );
