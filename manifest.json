@@ -1,0 +1,25 @@
+{
+    "name": " Alerts by Rung",
+    "details": "Connect [Rung](https://app.rung.com.br/) with Trello to track your important alerts and notifications. The Rung Power-Up allows you to:\n\n- Install a Rung extension from Trello and link to a card\n- Get real-time updates on your Rung alerts\n- See your Rung alerts inside Trello and Rung\n\n### Screenshot\n![Rung](http://i.imgur.com/hwwYxnS.png)",
+    "icon": {
+        "url": "./resources/rung.png"
+    },
+    "author": "Rung Developers Team",
+    "capabilities": [
+        "attachment-sections",
+        "card-badges",
+        "card-buttons",
+        "board-buttons",
+        "authorization-status",
+        "show-authorization",
+        "callback"
+    ],
+    "connectors": {
+        "iframe": {
+            "url": "./index.html"
+        }
+    },
+    "recommend": {
+        "urls": []
+    }
+}

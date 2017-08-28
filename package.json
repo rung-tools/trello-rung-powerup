@@ -1,0 +1,93 @@
+{
+  "name": "rung-powerup",
+  "version": "0.0.1",
+  "description": "Get up to date about your Rung alerts inside Trello!",
+  "main": "server.js",
+  "repository": "ssh://tfs.ngi.com.br:22/tfs/NG/rung-saas/_git/rung-powerup",
+  "author": "Paulo Henrique Cuchi <paulo.cuchi@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "build": "rm -rf public && webpack",
+    "build:production": "rm -rf public && webpack -p",
+    "lint": "xo",
+    "lint:fix": "xo --fix",
+    "dev": "yarn build && yarn start"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "preact": "^8.2.1",
+    "ramda": "^0.24.1",
+    "superagent": "^3.5.2",
+    "superagent-promise": "^1.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-preact": "^1.1.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "express": "^4.15.4",
+    "file-loader": "^0.11.2",
+    "image-webpack-loader": "^3.3.1",
+    "webpack": "^2.6.1",
+    "xo": "^0.18.2"
+  },
+  "xo": {
+    "esnext": true,
+    "space": 4,
+    "rules": {
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "operator-linebreak": [
+        "error",
+        "before"
+      ],
+      "import/prefer-default-export": [
+        "off"
+      ],
+      "no-restricted-syntax": [
+        "error",
+        "ForStatement",
+        "WhileStatement",
+        "SwitchStatement",
+        "VariableDeclaration[kind='var']",
+        "TryStatement"
+      ],
+      "no-unused-vars": [
+        "off"
+      ],
+      "import/no-unresolved": [
+        "off"
+      ]
+    },
+    "overrides": [
+      {
+        "files": "src/*.jsx",
+        "globals": [
+          "window",
+          "document"
+        ],
+        "rules": {
+          "unicorn/filename-case": [
+            "error",
+            {
+              "case": "pascalCase"
+            }
+          ]
+        }
+      },
+      {
+        "files": "webpack.config.js",
+        "rules": {
+          "unicorn/no-process-exit": [
+            "off"
+          ]
+        }
+      }
+    ]
+  }
+}
