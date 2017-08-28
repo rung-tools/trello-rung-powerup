@@ -166,7 +166,7 @@ export default class LoginForm extends Component {
                         { this.getMessage() }
                     </button>
                     <div style={ styles.register }>
-                        Don't you have an account? <a href="https://app.rung.com.br/signup">Register!</a>
+                        Don't you have an account? <a href="https://app.rung.com.br/signup">Sign up!</a>
                     </div>
                 </div>
             </div>
