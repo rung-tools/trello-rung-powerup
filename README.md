@@ -8,3 +8,4 @@ Connect [Rung](https://app.rung.com.br/) with Trello to track your important ale
 
 ### Screenshot
 ![Rung](http://i.imgur.com/hwwYxnS.png)
+![Rung](http://i.imgur.com/jerN1Kj.png)
