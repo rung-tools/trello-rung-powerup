@@ -11,6 +11,12 @@ const sandbox = ({ content, id }) => `
     </a>`;
 let viewDidLoad = false;
 
+const nothing = `
+    <div class="nothing">
+        There is nothing to see here! &#128542;
+    </div>
+`;
+
 trello.render(() => {
     const content = document.getElementById('content');
     if (!viewDidLoad) {
@@ -20,7 +26,9 @@ trello.render(() => {
 
     getAlerts(instance.id, sessionToken)
         .then(alerts => {
-            content.innerHTML = alerts.map(sandbox).join('');
+            content.innerHTML = alerts.length > 0
+                ? alerts.map(sandbox).join('')
+                : nothing;
         })
         .catch(err => {
             if (err.status === 401 || err.status === 403) {
